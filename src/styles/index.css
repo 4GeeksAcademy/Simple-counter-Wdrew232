@@ -1,51 +1,96 @@
-
-.text-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: black;
-  color: white;  /* Ensure text contrast for readability */
-  border-radius: 50%;  /* Adjusted for a better-rounded shape */
-  box-shadow: 
-      0 0 10px red, 
-      0 0 10px lightgreen, 
-      0 0 10px green, 
-      0 0 10px pink, 
-      0 0 10px yellow, 
-      0 0 10px blue, 
-      0 0 10px purple;
-}
-  h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  .counter {
+/* Reset and Basic Styling */
+body {
+    margin: 0;
+    padding: 0;
+    background: #1a1a2e; /* Dark background */
+    overflow: hidden;
     display: flex;
-    gap: 10px;
-  }
-  .counter div {
-    width: 40px;
-    height: 60px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Sky Background */
+.sky {
+    position: relative;
+    width: 100%;
+    height: 25vh; /* Ensure sheep stays inside */
+    background-color: #87CEEB; /* Light sky blue */
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    font-family: "Courier New", Courier, monospace;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  .clock{
-    margin-right: 50px ;
-  }
-  .pic{
-    margin-bottom: 30px;
-  }
-  body { 
-    background-color: black; 
-  } 
+}
 
+/* Title Styling */
+.title {
+    color: white;
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+/* Large Animated Sheep */
+.sheep {
+    position: absolute;
+    font-size: 10rem; /* Increased size */
+    animation: move-across 6s linear infinite; /* Moves right to left */
+}
+
+/* Sheep Movement: Right to Left */
+@keyframes move-across {
+    0% { transform: translateX(110vw) translateY(0); } /* Start on the right */
+    100% { transform: translateX(-10vw) translateY(0); } /* Move left */
+}
+
+/* Counter Styling */
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.counter-digit {
+    padding: 10px;
+    background: rgba(173, 216, 230, 0.8);
+    border-radius: 5px;
+}
+
+/* Raindrop Animation */
+.rain-drop {
+    position: absolute;
+    width: 3px;
+    height: 10px;
+    background: rgba(173, 216, 230, 0.7);
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from { top: -20px; opacity: 1; }
+    to { top: 100vh; opacity: 0; }
+}
+
+/* Lightning Effect */
+.lightning {
+    position: fixed;
+    width:1vw;
+    height: 100vh;
+    background: rgb(79, 89, 3);
+    opacity: 0;
+    z-index: 10; /* Ensures it flashes over everything */
+}
+
+.lightning.active {
+    animation: flash 0.3s ease-in-out; /* Quick burst */
+}
+
+@keyframes flash {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    50% { opacity: 0; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
 
